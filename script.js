@@ -1,7 +1,7 @@
 // API URL configuration
 const API_URL = window.location.hostname === 'localhost' 
     ? 'http://localhost:5000' 
-    : 'https://your-app-name.onrender.com';
+    : 'https://theeace-login-portal.onrender.com';
 
 // Check if user is already logged in
 window.onload = function() {
