@@ -223,6 +223,21 @@ app.post('/api/login', (req, res) => {
     }
 });
 
+// Logout and delete cookies endpoint
+app.get('/deleteCookiesAndLogout', (req, res) => {
+    // Clear cookies by setting them to expire
+    res.clearCookie('loggedInUser');
+    
+    // Send response with script to clear local storage and redirect
+    res.send(`
+        <script>
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = '/';
+        </script>
+    `);
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);

@@ -81,3 +81,17 @@ function logout() {
     localStorage.removeItem('loggedInUser');
     window.location.href = 'index.html';
 }
+
+function deleteCookiesAndLogout() {
+    // Delete all cookies
+    document.cookie.split(";").forEach(function(c) { 
+        document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+    
+    // Clear any stored session/local storage
+    localStorage.clear();
+    sessionStorage.clear();
+    
+    // Redirect to login page
+    window.location.href = '/';
+}
